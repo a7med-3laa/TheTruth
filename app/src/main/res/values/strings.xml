@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">TheTruth</string>
+    <string name="title_activity_slider">SliderActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_registartion">Registartion</string>
+    <string name="title_activity_forget_password">Forget Password</string>
+    <string name="let_s_start_btn">Let\'s Start</string>
+    <string name="first_slide">first_slide</string>
+    <string name="second_slider">SECOND slider</string>
+    <string name="third_slider">THIRD_SLIDER</string>
+    <string name="f">Do you forget <span style="color:blue">password</span> ?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="error_invalid_name">This name address is invalid</string>
+    <string name="error_invalid_email"> email address is invalid</string>
+    <string name="error_invalid_password"> password is too short</string>
+    <string name="error_incorrect_password"> password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="title_activity_send_feed_back">The Honest</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

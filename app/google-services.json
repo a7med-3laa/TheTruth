@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "824635761180",
+    "firebase_url": "https://thetruth-9b237.firebaseio.com",
+    "project_id": "thetruth-9b237",
+    "storage_bucket": "thetruth-9b237.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824635761180:android:a280f12c97b27901",
+        "android_client_info": {
+          "package_name": "com.ahmedalaa.thetruth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824635761180-vt3456cp02icj7es2j5imjn1scom2a8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedalaa.thetruth",
+            "certificate_hash": "0cf268c10e60b5824e4e38438a9cdb55e2f9ab56"
+          }
+        },
+        {
+          "client_id": "824635761180-mk1lvmkqb3g376689np8tghmuebfb21c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtDIeiwrejFG9ZZLODbO3-Opy2B1_PqwE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824635761180-mk1lvmkqb3g376689np8tghmuebfb21c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
