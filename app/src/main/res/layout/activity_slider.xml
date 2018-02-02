@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ahmedalaa.thetruth.SliderActivity">
+    tools:context="com.ahmedalaa.Honestly.SliderActivity">
 
     <include layout="@layout/content_slider" />
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ahmedalaa.thetruth">
+    package="com.ahmedalaa.Honestly">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".SplashScreen"
+            android:name="com.ahmedalaa.Honestly.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +25,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SliderActivity"
+            android:name="com.ahmedalaa.Honestly.SliderActivity"
             android:label="@string/title_activity_slider"
             android:screenOrientation="portrait"
             android:theme="@style/sliderTheme" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.ahmedalaa.Honestly.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -38,45 +38,45 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name="com.ahmedalaa.Honestly.RegistrationActivity"
             android:label="@string/title_activity_registartion"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.ahmedalaa.Honestly.LoginActivity"
 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ahmedalaa.thetruth.LoginActivity" />
+                android:value="com.ahmedalaa.Honestly.LoginActivity" />
         </activity>
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name="com.ahmedalaa.Honestly.ForgetPasswordActivity"
             android:label="@string/title_activity_forget_password"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.ahmedalaa.Honestly.LoginActivity"
 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ahmedalaa.thetruth.LoginActivity" />
+                android:value="com.ahmedalaa.Honestly.LoginActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.ahmedalaa.Honestly.MainActivity"
             android:label="@string/title_activity_main"
 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SendFeedBackActivity"
+            android:name="com.ahmedalaa.Honestly.SendFeedBackActivity"
             android:label="@string/title_activity_send_feed_back"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.ahmedalaa.Honestly.MainActivity"
 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ahmedalaa.thetruth.MainActivity" />
+                android:value="com.ahmedalaa.Honestly.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -91,7 +91,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".widget.MessagesWidget">
+        <receiver android:name="com.ahmedalaa.Honestly.widget.MessagesWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -102,17 +102,17 @@
         </receiver>
 
         <service
-            android:name=".widget.WidgetService"
+            android:name="com.ahmedalaa.Honestly.widget.WidgetService"
 
             android:enabled="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <service android:name=".fcm.MyFirebaseInstanceIdService">
+        <service android:name="com.ahmedalaa.Honestly.fcm.MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".fcm.MyFirebaseMessagingService">
+        <service android:name="com.ahmedalaa.Honestly.fcm.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -54,5 +54,8 @@
     <string name="error_connection">Error in connection</string>
     <string name="no_users_found">no users found</string>
     <string name="tell_him">Tell Him</string>
+    <string name="logo_description">app logo</string>
+    <string name="sad_face">sad face</string>
+    <string name="search_hint">search by name</string>
 
 </resources>

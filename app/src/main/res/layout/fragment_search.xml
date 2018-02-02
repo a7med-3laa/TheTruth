@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.ahmedalaa.thetruth.SearchFragment">
+    tools:context="com.ahmedalaa.Honestly.SearchFragment">
 
     <LinearLayout
         android:id="@+id/container"
@@ -17,7 +17,8 @@
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00897B">
+            android:background="#00897B"
+            android:queryHint="@string/search_hint">
 
         </SearchView>
 
@@ -53,6 +54,8 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
+            android:contentDescription="@string/sad_face"
+
             android:tint="#444"
             app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_24dp" />
 

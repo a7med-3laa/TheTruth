@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/_60sdp"
-        android:text="TextView"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="@dimen/_55sdp" />
 </FrameLayout>
