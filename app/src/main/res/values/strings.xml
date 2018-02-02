@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">TheTruth</string>
+    <string name="app_name">Honesty</string>
     <string name="title_activity_slider">SliderActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_registartion">Registartion</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_registartion">Registration</string>
     <string name="title_activity_forget_password">Forget Password</string>
     <string name="let_s_start_btn">Let\'s Start</string>
-    <string name="first_slide">first_slide</string>
-    <string name="second_slider">SECOND slider</string>
-    <string name="third_slider">THIRD_SLIDER</string>
+    <string name="first_slide">Get honest feedback from your coworkers and friends</string>
+    <string name="second_slider">Send honest feedback from your coworkers and friends</string>
+    <string name="third_slider">without know who you Are</string>
     <string name="f">Do you forget <span style="color:blue">password</span> ?</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
@@ -22,5 +22,37 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="email_placeHolder">Email</string>
+    <string name="password_placeholder">Password</string>
+    <string name="log_in_btn">Log in</string>
+    <string name="sign_up_btn">Sign up</string>
+    <string name="honesty_logo_description">Honesty logo</string>
+    <string name="login_with_gmail_btn_description">login with gmail</string>
+    <string name="name_placeHolder">ex : john ahmed</string>
+    <string name="send_me_password_btn">Send Me Password</string>
+    <string name="sent_password_done">see your Email</string>
+    <string name="share_feedback">Share feedBack</string>
+    <string name="replay_dialog_title">Replay to msg</string>
+    <string name="enter_msg_hnt">Enter your msg honestly</string>
+    <string name="send_btn">Send</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="msgs_Fragment">Messages</string>
+    <string name="send_messages_fragment">Send Messages</string>
+    <string name="search_fragment">Search</string>
+    <string name="setting_fragment_title">Settings</string>
+    <string name="user_profile_pic_description">user profile Pic</string>
+    <string name="no_messages_txt">No Messages</string>
+    <string name="log_out_btn">Log Out</string>
+    <string name="push_notification">Push Notification</string>
+    <string name="email_notification">Email Notification</string>
+    <string name="audio_notification">Audio Notification</string>
+    <string name="alerts">Alerts</string>
+    <string name="replay_to_messages_btn_desc">Replay to Messages</string>
+    <string name="react_btn_desc">not yet</string>
+    <string name="error_connection">Error in connection</string>
+    <string name="no_users_found">no users found</string>
+    <string name="tell_him">Tell Him</string>
 
 </resources>

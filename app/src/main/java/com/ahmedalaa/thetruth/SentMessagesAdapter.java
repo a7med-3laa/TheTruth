@@ -9,6 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ahmedalaa.thetruth.model.Msg;
+import com.ahmedalaa.thetruth.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,14 +24,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by ahmed on 30/01/2018.
- */
-public class OutMsgsAdapter extends RecyclerView.Adapter<OutMsgsAdapter.MsgsAdapterHolder> {
+public class SentMessagesAdapter extends RecyclerView.Adapter<SentMessagesAdapter.MsgsAdapterHolder> {
     private final Context context;
     private List<Msg> items;
 
-    public OutMsgsAdapter(Context context) {
+    SentMessagesAdapter(Context context) {
         this.items = new ArrayList<>();
         this.context = context;
     }
@@ -48,8 +51,21 @@ public class OutMsgsAdapter extends RecyclerView.Adapter<OutMsgsAdapter.MsgsAdap
         Msg item = items.get(position);
         holder.msgs.setText(item.getMsg());
         holder.msgs2.setText(item.getReplayMsg());
-        holder.nameTxt.setText(item.getReciverName());
-        Picasso.with(context).load(item.getReciverPic()).into(holder.userImg);
+        Query user = FirebaseDatabase.getInstance().getReference().child("users").child(item.getReceiverID());
+        user.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user1 = dataSnapshot.getValue(User.class);
+                holder.nameTxt.setText(user1.getName());
+                if (!user1.getPhotoURL().isEmpty())
+                    Picasso.with(context).load(user1.getPhotoURL()).into(holder.userImg);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -77,7 +93,7 @@ public class OutMsgsAdapter extends RecyclerView.Adapter<OutMsgsAdapter.MsgsAdap
             ButterKnife.bind(this, view);
             view.setOnClickListener(v -> {
                 Intent i = new Intent(context, SendFeedBackActivity.class);
-                i.putExtra("ID", items.get(getAdapterPosition()).getReciverID());
+                i.putExtra("receiverID", items.get(getAdapterPosition()).getReceiverID());
                 context.startActivity(i);
 
 

@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.ahmedalaa.thetruth.Util.NetworkUtil;
 import com.ahmedalaa.thetruth.model.Msg;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +35,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyMsgFragment extends Fragment {
+public class SentMessagesFragment extends Fragment {
 
 
     @BindView(R.id.msgs_list)
@@ -45,9 +47,15 @@ public class MyMsgFragment extends Fragment {
     Unbinder unbinder;
     Query msgs;
 
+    SentMessagesAdapter msgsAdapter;
+
     ValueEventListener valueEventListener;
 
-    public MyMsgFragment() {
+    List<Msg> msgsItem;
+    View view;
+    private boolean isOffline;
+
+    public SentMessagesFragment() {
         // Required empty public constructor
     }
 
@@ -55,51 +63,61 @@ public class MyMsgFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_msg, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        MsgsAdapter msgsAdapter = new MsgsAdapter(getActivity());
-        msgsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        msgsList.setAdapter(msgsAdapter);
-        showProgress(true);
-        String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if (view == null || isOffline) {
+            view = inflater.inflate(R.layout.fragment_out_msg, container, false);
+            unbinder = ButterKnife.bind(this, view);
+            setRetainInstance(true);
+            msgsAdapter = new SentMessagesAdapter(getActivity());
+            msgsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            msgsList.setAdapter(msgsAdapter);
+            showProgress(true);
+            String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            msgs = FirebaseDatabase.getInstance().getReference().child("msgs").orderByChild("senderID").
+                    equalTo(ID);
+            if (NetworkUtil.isConnected(getActivity())) {
 
-        msgs = FirebaseDatabase.getInstance().getReference().child("msgs").orderByChild("reciverID").
-                equalTo(ID);
-        valueEventListener = msgs.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                showProgress(false);
-                if (dataSnapshot.getChildrenCount() == 0) {
-                    noMsgs.setVisibility(View.VISIBLE);
-                } else {
-                    noMsgs.setVisibility(View.INVISIBLE);
+                valueEventListener = msgs.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        showProgress(false);
+                        if (dataSnapshot.getChildrenCount() == 0) {
+                            noMsgs.setVisibility(View.VISIBLE);
+                        } else {
+                            noMsgs.setVisibility(View.INVISIBLE);
 
-                    List<Msg> msgs = new ArrayList<>();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        msgs.add(snapshot.getValue(Msg.class));
+                            msgsItem = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                msgsItem.add(snapshot.getValue(Msg.class));
+                            }
+                            msgsAdapter.add(msgsItem);
+                        }
                     }
-                    msgsAdapter.add(msgs);
 
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        showProgress(false);
+                        noMsgs.setVisibility(View.VISIBLE);
+                        Snackbar.make(container, databaseError.getMessage(), Snackbar.LENGTH_LONG).show();
+                    }
+                });
+            } else {
                 showProgress(false);
+                TextView textView = noMsgs.findViewById(R.id.alert_msg);
+                textView.setText(R.string.error_connection);
                 noMsgs.setVisibility(View.VISIBLE);
-                Snackbar.make(container, databaseError.getMessage(), Snackbar.LENGTH_LONG).show();
+                isOffline = true;
             }
-        });
-
-
+            showProgress(false);
+        }
         return view;
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        msgs.removeEventListener(valueEventListener);
+
+
     }
 
     private void showProgress(final boolean show) {

@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00796B</color>
     <color name="colorAccent">#448AFF</color>
     <color name="colorBackground">#283593</color>
+    <color name="colorwhiteText">@color/cardview_light_background</color>
+
 </resources>

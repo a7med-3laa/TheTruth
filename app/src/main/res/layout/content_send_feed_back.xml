@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eee"
+    android:paddingBottom="@dimen/_1sdp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ahmedalaa.thetruth.SendFeedBackActivity"
     tools:showIn="@layout/activity_send_feed_back">
@@ -19,7 +20,8 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
-        android:src="@mipmap/ic_launcher_round" />
+        android:contentDescription="@string/user_profile_pic_description"
+        android:src="@drawable/placeholder" />
 
     <TextView
         android:id="@+id/name_txt"
@@ -30,8 +32,7 @@
         android:layout_marginTop="@dimen/_10sdp"
 
         android:layout_toEndOf="@id/user_img"
-        android:padding="@dimen/_5sdp"
-        android:text="TextView" />
+        android:padding="@dimen/_5sdp" />
 
     <View
         android:id="@+id/view"
@@ -51,7 +52,9 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/edittxt_background"
         android:ems="10"
-        android:inputType="textMultiLine" />
+        android:hint="@string/enter_msg_hnt"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/_10sdp" />
 
     <Button
         android:id="@+id/send_btn"
@@ -63,9 +66,8 @@
         android:background="#ccc"
         android:drawablePadding="@dimen/_10sdp"
         android:drawableStart="@drawable/ic_send_black_24dp"
-        android:drawableTint="@color/colorPrimary"
         android:paddingLeft="@dimen/_50sdp"
         android:paddingRight="@dimen/_50sdp"
-        android:text="Tell Him"
+        android:text="@string/tell_him"
         android:textColor="@color/colorPrimary" />
 </RelativeLayout>

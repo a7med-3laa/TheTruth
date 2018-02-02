@@ -17,8 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:padding="@dimen/_5sdp"
-            android:text="TextView" />
+            android:padding="@dimen/_5sdp" />
 
         <TextView
             android:id="@+id/msgs"
@@ -27,7 +26,6 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/date"
             android:padding="@dimen/_5sdp"
-            android:text="TextView"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="#000" />
 
@@ -44,6 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/replay_to_messages_btn_desc"
                 android:tint="@color/cardview_dark_background"
                 app:srcCompat="@drawable/ic_login" />
 
@@ -51,20 +50,21 @@
                 android:id="@+id/share"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="match_parent"
-
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/share_feedback"
                 android:tint="@color/cardview_dark_background"
                 app:srcCompat="@drawable/ic_share_black" />
 
             <ImageButton
                 android:id="@+id/react"
-
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/react_btn_desc"
                 android:tint="@color/cardview_dark_background"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_insert_emoticon_black" />
         </LinearLayout>
     </RelativeLayout>

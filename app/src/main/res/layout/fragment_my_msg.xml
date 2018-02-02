@@ -3,13 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ahmedalaa.thetruth.MyMsgFragment">
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ahmedalaa.thetruth.MessagesFragment">
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/msgs_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/msg_item"
+
+        />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -37,10 +42,11 @@
             app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_24dp" />
 
         <TextView
+            android:id="@+id/alert_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No Messages "
+            android:text="@string/no_messages_txt"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="#444"
             android:textStyle="bold" />

@@ -17,4 +17,25 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="sliderTheme" parent="AppTheme.NoActionBar">
+        <item name="android:textColor">@color/colorwhiteText</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="AuthTxtTheme" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorwhiteText</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColorHint">#999</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:background">@drawable/edittxt_background</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+
+
+    </style>
 </resources>

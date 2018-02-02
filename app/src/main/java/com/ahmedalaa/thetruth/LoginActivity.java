@@ -4,15 +4,19 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
@@ -34,16 +38,27 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     @BindView(R.id.container2)
     ConstraintLayout container2;
+    @BindView(R.id.login_btn)
+    Button loginBtn;
+    @BindView(R.id.sign_up)
+    Button signUp;
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_login);
+        loginBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null, null);
+        Drawable drawable2 = ContextCompat.getDrawable(this, R.drawable.ic_add);
+        signUp.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable2, null, null, null);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
     }
@@ -55,7 +70,9 @@ public class LoginActivity extends AppCompatActivity {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
 
         }
         String email = emailTxt.getText().toString().trim();
@@ -91,12 +108,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.sign_up)
     public void onSignUpClicked() {
-        startActivity(new Intent(LoginActivity.this, RegistartionActivity.class));
+        startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
 
-    }
-
-    @OnClick(R.id.google_login)
-    public void onGoogleLoginClicked() {
     }
 
     @OnClick(R.id.forgetPassword_txt)
@@ -115,9 +128,6 @@ public class LoginActivity extends AppCompatActivity {
         return password.length() >= 6;
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
     private void showProgress(final boolean show) {
 
         int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);

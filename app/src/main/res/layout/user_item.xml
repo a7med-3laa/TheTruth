@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/_60sdp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_img"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_alignParentStart="true"
         android:layout_margin="@dimen/_10sdp"
-        app:srcCompat="@drawable/ic_insert_emoticon_black" />
+        android:src="@drawable/placeholder" />
 
     <TextView
         android:id="@+id/user_name"
@@ -20,7 +20,6 @@
         android:layout_marginBottom="@dimen/_2sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_toEndOf="@id/user_img"
-        android:text="TextView"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
     <TextView
@@ -28,8 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/user_name"
-        android:layout_below="@+id/user_name"
-        android:text="TextView" />
+        android:layout_below="@+id/user_name" />
 
     <ImageButton
         android:id="@+id/send_btn"
@@ -39,5 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_16sdp"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_send_black_24dp" />
+        android:contentDescription="@string/share_feedback"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_send2" />
 </RelativeLayout>

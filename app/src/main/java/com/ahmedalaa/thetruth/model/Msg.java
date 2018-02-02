@@ -1,34 +1,31 @@
 package com.ahmedalaa.thetruth.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import org.parceler.Parcel;
+
+import java.util.Date;
 
 /**
  * Created by ahmed on 30/01/2018.
  */
-
+@Parcel
 public class Msg {
     String msg;
     String senderID;
-    String reciverID;
-    String reciverName;
-    String reciverPic;
+    String receiverID;
     String replayMsg;
-    int react;
-    String date;
+    Date date;
+    String id;
 
     public Msg() {
     }
 
-    public Msg(String msg, String senderID, String reciverID, String reciverName, String reciverPic, String replayMsg, int react) {
+    public Msg(String msg, String senderID, String receiverID, String id) {
         this.msg = msg;
         this.senderID = senderID;
-        this.reciverID = reciverID;
-        this.reciverName = reciverName;
-        this.reciverPic = reciverPic;
-        this.replayMsg = replayMsg;
-        this.react = react;
-        this.date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        this.receiverID = receiverID;
+        this.id = id;
+        replayMsg = "";
+        date = new Date();
     }
 
     public String getMsg() {
@@ -39,27 +36,24 @@ public class Msg {
         return senderID;
     }
 
-    public String getReciverID() {
-        return reciverID;
+    public String getReceiverID() {
+        return receiverID;
     }
 
     public String getReplayMsg() {
         return replayMsg;
     }
 
-    public int getReact() {
-        return react;
+    public void setReplayMsg(String replayMsg) {
+        this.replayMsg = replayMsg;
     }
 
-    public String getDate() {
+    public String getId() {
+        return id;
+    }
+
+    public Date getDate() {
         return date;
     }
 
-    public String getReciverName() {
-        return reciverName;
-    }
-
-    public String getReciverPic() {
-        return reciverPic;
-    }
 }

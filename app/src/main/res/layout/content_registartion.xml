@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ahmedalaa.thetruth.RegistartionActivity"
+    tools:context="com.ahmedalaa.thetruth.RegistrationActivity"
     tools:showIn="@layout/activity_registartion">
 
     <FrameLayout
@@ -26,67 +26,54 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="63dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/honesty_logo_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+                app:srcCompat="@drawable/logo" />
 
             <EditText
                 android:id="@+id/name_txt"
+                style="@style/AuthTxtTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="26dp"
-                android:background="@drawable/edittxt_background"
                 android:ems="10"
-                android:hint="ex : john ahmed"
+                android:hint="@string/name_placeHolder"
                 android:inputType="textPersonName"
-                android:padding="@dimen/_5sdp"
-                android:textColor="#ddd"
 
-                android:textColorHint="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             <EditText
                 android:id="@+id/email_txt"
+                style="@style/AuthTxtTheme"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
 
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="6dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/edittxt_background"
                 android:ems="10"
-                android:hint="enter your mail"
+                android:hint="@string/email_placeHolder"
                 android:inputType="textEmailAddress"
-                android:padding="@dimen/_5sdp"
-                android:textColor="#ddd"
 
-                android:textColorHint="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name_txt" />
 
             <EditText
                 android:id="@+id/password_txt"
+                style="@style/AuthTxtTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/edittxt_background"
+                android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="password"
+                android:hint="@string/password_placeholder"
                 android:inputType="textPassword"
-                android:padding="@dimen/_5sdp"
-                android:textColor="#ddd"
 
-                android:textColorHint="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_txt" />
@@ -99,12 +86,11 @@
                 android:layout_marginStart="@dimen/_16sdp"
 
                 android:layout_marginTop="21dp"
-                android:background="#900"
-                android:drawableStart="@drawable/ic_add"
+                android:background="#c44336"
 
                 android:paddingEnd="@dimen/_20sdp"
                 android:paddingStart="@dimen/_20sdp"
-                android:text="Sign up"
+                android:text="@string/sign_up_btn"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="@dimen/_20ssp"

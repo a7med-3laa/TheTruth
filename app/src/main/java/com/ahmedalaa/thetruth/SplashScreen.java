@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.ahmedalaa.thetruth.Util.SessionManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SplashScreen extends AppCompatActivity {
     SessionManager sessionManager;
@@ -21,8 +22,7 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash_screen);
-        sessionManager = new SessionManager(getPreferences(MODE_PRIVATE));
-
+        sessionManager = new SessionManager(this);
         Runnable a = () -> {
             Intent i = new Intent(getApplicationContext(), SliderActivity.class);
             startActivity(i);
@@ -31,8 +31,9 @@ public class SplashScreen extends AppCompatActivity {
         };
         if (sessionManager.isFirstTime()) {
             sessionManager.visited();
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-            new Handler().postDelayed(a, 2000);
+            new Handler().postDelayed(a, 4000);
 
         } else if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));

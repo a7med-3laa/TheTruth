@@ -1,24 +1,37 @@
 package com.ahmedalaa.thetruth.model;
 
+import org.parceler.Parcel;
+
 /**
  * Created by ahmed on 30/01/2018.
  */
-
+@Parcel
 public class User {
     String id;
     String name;
     String email;
     String userName;
     String photoURL;
+    String token;
 
     public User() {
     }
 
-    public User(String ID, String name, String email, String userName, String photoURL) {
-        this.id = ID;
+    public User(String id, String name, String email, String photoURL, String token) {
+        this.id = id;
         this.name = name;
         this.email = email;
-        this.userName = userName;
+        this.userName = email.substring(0, email.indexOf('@'));
+        this.photoURL = photoURL;
+        this.token = token;
+    }
+
+    public User(String id, String name, String email, String photoURL) {
+        this.id = id;
+        this.name = name;
+
+        this.userName = email.substring(0, email.indexOf('@'));
+        this.email = email;
         this.photoURL = photoURL;
     }
 
@@ -26,11 +39,9 @@ public class User {
         return id;
     }
 
-
     public String getName() {
         return name;
     }
-
 
     public String getEmail() {
         return email;
@@ -40,9 +51,12 @@ public class User {
         return userName;
     }
 
-
     public String getPhotoURL() {
         return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 }
 

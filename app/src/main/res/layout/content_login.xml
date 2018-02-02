@@ -25,36 +25,27 @@
 
             <EditText
                 android:id="@+id/email_txt"
+                style="@style/AuthTxtTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
+
                 android:layout_marginTop="25dp"
-                android:background="@drawable/edittxt_background"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email_placeHolder"
                 android:inputType="textEmailAddress"
-                android:padding="@dimen/_5sdp"
-                android:textColor="#ddd"
-                android:textColorHint="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <EditText
                 android:id="@+id/password_txt"
+                style="@style/AuthTxtTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edittxt_background"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password_placeholder"
                 android:inputType="textPassword"
-                android:padding="@dimen/_5sdp"
-                android:textColor="#ddd"
-                android:textColorHint="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +59,9 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/colorPrimary"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableStart="@drawable/ic_login"
                 android:paddingEnd="@dimen/_15sdp"
                 android:paddingStart="@dimen/_15sdp"
-                android:text="Log in"
+                android:text="@string/log_in_btn"
                 android:textAllCaps="false"
                 android:textColor="#ddd"
                 app:layout_constraintEnd_toStartOf="@+id/sign_up"
@@ -85,31 +75,16 @@
                 android:layout_marginEnd="50dp"
                 android:background="#c44336"
 
-                android:drawableStart="@drawable/ic_add"
                 android:paddingEnd="@dimen/_15sdp"
                 android:paddingStart="@dimen/_15sdp"
 
-                android:text="Sign up"
+                android:text="@string/sign_up_btn"
                 android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintStart_toEndOf="@+id/login_btn"
                 app:layout_constraintTop_toTopOf="@+id/login_btn" />
 
-            <ImageButton
-                android:id="@+id/google_login"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/sign_with_google"
-                android:text="Button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
             <TextView
                 android:id="@+id/forgetPassword_txt"
@@ -124,17 +99,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/google_login" />
+                app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginTop="31dp"
+                android:contentDescription="@string/honesty_logo_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                app:srcCompat="@drawable/logo" />
         </android.support.constraint.ConstraintLayout>
 
         <ProgressBar

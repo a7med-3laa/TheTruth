@@ -3,7 +3,6 @@ package com.ahmedalaa.thetruth;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.ahmedalaa.thetruth.Util.NetworkUtil;
 import com.ahmedalaa.thetruth.model.Msg;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +35,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OutMsgFragment extends Fragment {
+public class MessagesFragment extends Fragment {
 
 
     @BindView(R.id.msgs_list)
@@ -45,9 +46,12 @@ public class OutMsgFragment extends Fragment {
     LinearLayout noMsgs;
     Unbinder unbinder;
     Query msgs;
+    View view = null;
+    boolean isOffline = false;
+
     ValueEventListener valueEventListener;
 
-    public OutMsgFragment() {
+    public MessagesFragment() {
         // Required empty public constructor
     }
 
@@ -56,56 +60,59 @@ public class OutMsgFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_out_msg, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        MsgsAdapter msgsAdapter = new MsgsAdapter(getActivity());
-        msgsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        msgsList.setAdapter(msgsAdapter);
-        showProgress(true);
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-            getActivity().finish();
-        } else {
+        if (view == null || isOffline) {
+            view = inflater.inflate(R.layout.fragment_my_msg, container, false);
+            unbinder = ButterKnife.bind(this, view);
+            MessagesAdapter messagesAdapter = new MessagesAdapter(getActivity());
+            msgsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            msgsList.setAdapter(messagesAdapter);
+            showProgress(true);
             String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-            msgs = FirebaseDatabase.getInstance().getReference().child("msgs").orderByChild("senderID").
+            msgs = FirebaseDatabase.getInstance().getReference().child("msgs").orderByChild("receiverID").
                     equalTo(ID);
+            if (NetworkUtil.isConnected(getActivity())) {
+                valueEventListener = msgs.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        showProgress(false);
+                        if (dataSnapshot.getChildrenCount() == 0) {
+                            noMsgs.setVisibility(View.VISIBLE);
 
-            valueEventListener = msgs.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    showProgress(false);
-                    if (dataSnapshot.getChildrenCount() == 0) {
-                        noMsgs.setVisibility(View.VISIBLE);
-                    } else {
-                        noMsgs.setVisibility(View.INVISIBLE);
+                        } else {
+                            noMsgs.setVisibility(View.INVISIBLE);
 
-                        List<Msg> msgs = new ArrayList<>();
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            msgs.add(snapshot.getValue(Msg.class));
+                            List<Msg> msgs = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                msgs.add(snapshot.getValue(Msg.class));
+                            }
+                            messagesAdapter.add(msgs);
+
                         }
-                        msgsAdapter.add(msgs);
-
                     }
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    showProgress(false);
-                    noMsgs.setVisibility(View.VISIBLE);
-                    Snackbar.make(container, databaseError.getMessage(), Snackbar.LENGTH_LONG).show();
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        showProgress(false);
+                        noMsgs.setVisibility(View.VISIBLE);
+                        Snackbar.make(container, databaseError.getMessage(), Snackbar.LENGTH_LONG).show();
+                    }
+
+                });
+            } else {
+                showProgress(false);
+                TextView textView = noMsgs.findViewById(R.id.alert_msg);
+                textView.setText(R.string.error_connection);
+                noMsgs.setVisibility(View.VISIBLE);
+                isOffline = true;
+            }
         }
-
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
-        msgs.removeEventListener(valueEventListener);
     }
 
     private void showProgress(final boolean show) {
