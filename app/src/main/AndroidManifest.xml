@@ -63,7 +63,7 @@
         <activity
             android:name="com.ahmedalaa.Honestly.MainActivity"
             android:label="@string/title_activity_main"
-
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -10,26 +10,19 @@
     <string name="third_slider">without know who you Are</string>
     <string name="f">Do you forget <span style="color:blue">password</span> ?</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="error_invalid_name">This name address is invalid</string>
     <string name="error_invalid_email"> email address is invalid</string>
-    <string name="error_invalid_password"> password is too short</string>
     <string name="error_incorrect_password"> password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="title_activity_send_feed_back">The Honest</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
     <string name="email_placeHolder">Email</string>
     <string name="password_placeholder">Password</string>
     <string name="log_in_btn">Log in</string>
     <string name="sign_up_btn">Sign up</string>
     <string name="honesty_logo_description">Honesty logo</string>
-    <string name="login_with_gmail_btn_description">login with gmail</string>
     <string name="name_placeHolder">ex : john ahmed</string>
     <string name="send_me_password_btn">Send Me Password</string>
     <string name="sent_password_done">see your Email</string>
@@ -46,7 +39,6 @@
     <string name="no_messages_txt">No Messages</string>
     <string name="log_out_btn">Log Out</string>
     <string name="push_notification">Push Notification</string>
-    <string name="email_notification">Email Notification</string>
     <string name="audio_notification">Audio Notification</string>
     <string name="alerts">Alerts</string>
     <string name="replay_to_messages_btn_desc">Replay to Messages</string>

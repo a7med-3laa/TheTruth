@@ -79,7 +79,8 @@ public class SentMessagesFragment extends Fragment {
                 valueEventListener = msgs.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        showProgress(false);
+                        if (!SentMessagesFragment.this.isDetached())
+                            showProgress(false);
                         if (dataSnapshot.getChildrenCount() == 0) {
                             noMsgs.setVisibility(View.VISIBLE);
                         } else {
@@ -113,35 +114,28 @@ public class SentMessagesFragment extends Fragment {
     }
 
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-
-    }
-
     private void showProgress(final boolean show) {
+        if (isAdded()) {
+            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+            msgsList.setVisibility(show ? View.GONE : View.VISIBLE);
+            msgsList.animate().setDuration(shortAnimTime).alpha(
+                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    msgsList.setVisibility(show ? View.GONE : View.VISIBLE);
+                }
+            });
 
-        msgsList.setVisibility(show ? View.GONE : View.VISIBLE);
-        msgsList.animate().setDuration(shortAnimTime).alpha(
-                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                msgsList.setVisibility(show ? View.GONE : View.VISIBLE);
-            }
-        });
-
-        progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
-        progressBar.animate().setDuration(shortAnimTime).alpha(
-                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
-            }
-        });
-
+            progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+            progressBar.animate().setDuration(shortAnimTime).alpha(
+                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
+        }
     }
 
 }
